@@ -207,7 +207,7 @@
         <p>Age: <b>${age}</b></p>
         <p>You love <b>${genre.toUpperCase()}</b> movies 🎬</p>
         <p>Here are some recommendations for you:</p>
-        <ul>${randomMovies.map(movie => <li>✨ ${movie}</li>).join('')}</ul>
+        <ul>${randomMovies.map(movie => `<li>✨ ${movie}</li>`).join('')}</ul>
       `;
 
       form.reset();
