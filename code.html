@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎥 Movie Recommendation App</title>
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top left, #0f2027, #203a43, #2c5364);
+      color: #e0e0e0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .container {
+      background: rgba(20, 20, 30, 0.95);
+      padding: 35px;
+      border-radius: 16px;
+      width: 400px;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(0, 255, 204, 0.3),
+                  inset 0 0 10px rgba(0, 255, 204, 0.1);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    h2 {
+      color: #00e0ff;
+      text-shadow: 0 0 10px #00e0ff;
+      margin-bottom: 20px;
+    }
+
+    input, select, button {
+      width: 90%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      background-color: #1a1a2e;
+      color: #e0e0e0;
+      transition: all 0.3s ease;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      box-shadow: 0 0 8px #00e0ff;
+      background-color: #222240;
+    }
+
+    button {
+      background: linear-gradient(45deg, #00e0ff, #00ff88);
+      color: #111;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
+    }
+
+    .error {
+      color: #ff4d6d;
+      font-size: 0.9em;
+      margin-top: -8px;
+      margin-bottom: 5px;
+      text-align: left;
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .result {
+      margin-top: 25px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 20px;
+      animation: fadeIn 0.8s ease-in;
+      box-shadow: inset 0 0 15px rgba(0, 255, 204, 0.1);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      text-align: left;
+      margin-top: 10px;
+    }
+
+    li {
+      padding: 6px 0;
+      color: #00ffcc;
+      font-weight: 500;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>🎬 Movie Recommendation App</h2>
+
+    <form id="movieForm" novalidate>
+      <input type="text" id="name" placeholder="Enter your name">
+      <div id="nameError" class="error"></div>
+
+      <input type="number" id="age" placeholder="Enter your age">
+      <div id="ageError" class="error"></div>
+
+      <select id="genre">
+        <option value="">--Select Genre--</option>
+        <option value="action">Action</option>
+        <option value="comedy">Comedy</option>
+        <option value="drama">Drama</option>
+        <option value="horror">Horror</option>
+        <option value="scifi">Sci-Fi</option>
+      </select>
+      <div id="genreError" class="error"></div>
+
+      <button type="submit">🎥 Get Recommendations</button>
+    </form>
+
+    <div id="result" class="result"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById("movieForm");
+    const result = document.getElementById("result");
+
+    const movieList = {
+      action: ["Marvel", "Pathan", "Animal", "URI", "Avengers: Endgame", "Mission Impossible", "Black Panther", "Top Gun: Maverick"],
+      comedy: ["Phir Hera Pheri", "Golmaal", "PK", "Mr. Bean's Holiday", "21 Jump Street", "3 Idiots", "Ted"],
+      drama: ["Yashoda", "Hum Aapke Hai Kaun", "Vivah", "The Green Mile", "Titanic", "The Pursuit of Happyness", "The Social Network"],
+      horror: ["The Conjuring", "Shaitan", "Vash", "It", "1920", "Annabelle", "Sinister", "Hereditary"],
+      scifi: ["Mission Mangal", "Avatar", "The Matrix", "Robot", "Dune", "Edge of Tomorrow", "Blade Runner 2049", "Star Wars"]
+    };
+
+    function validateForm() {
+      let isValid = true;
+      const name = document.getElementById("name").value.trim();
+      const age = document.getElementById("age").value.trim();
+      const genre = document.getElementById("genre").value;
+      const nameError = document.getElementById("nameError");
+      const ageError = document.getElementById("ageError");
+      const genreError = document.getElementById("genreError");
+
+      nameError.textContent = "";
+      ageError.textContent = "";
+      genreError.textContent = "";
+
+      if (name === "") {
+        nameError.textContent = "Name is required.";
+        isValid = false;
+      } else if (name.length < 3) {
+        nameError.textContent = "Name must be at least 3 characters long.";
+        isValid = false;
+      }
+
+      if (age === "") {
+        ageError.textContent = "Age is required.";
+        isValid = false;
+      } else if (isNaN(age) || age < 13 || age > 120) {
+        ageError.textContent = "Please enter a valid age between 13 and 120.";
+        isValid = false;
+      }
+
+      if (genre === "") {
+        genreError.textContent = "Please select a genre.";
+        isValid = false;
+      }
+
+      return isValid;
+    }
+
+    function getRandomMovies(list, count) {
+      const shuffled = [...list].sort(() => 0.5 - Math.random());
+      return shuffled.slice(0, count);
+    }
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      if (!validateForm()) {
+        result.innerHTML = "";
+        return;
+      }
+
+      const name = document.getElementById("name").value.trim();
+      const age = document.getElementById("age").value.trim();
+      const genre = document.getElementById("genre").value;
+      const movies = movieList[genre];
+      const randomMovies = getRandomMovies(movies, 3);
+
+      result.innerHTML = `
+        <h3>Hello, ${name}!</h3>
+        <p>Age: <b>${age}</b></p>
+        <p>You love <b>${genre.toUpperCase()}</b> movies 🎬</p>
+        <p>Here are some recommendations for you:</p>
+        <ul>${randomMovies.map(movie => <li>✨ ${movie}</li>).join('')}</ul>
+      `;
+
+      form.reset();
+    });
+  </script>
+</body>
+</html>
