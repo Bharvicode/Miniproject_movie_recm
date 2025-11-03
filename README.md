@@ -61,13 +61,13 @@ Simply open the index.html file in any modern web browser (Chrome, Edge, Firefox
 
 If you face any issues or have questions regarding the project:
 
-Check the in-code comments for explanations of logic and structure.
+>Check the in-code comments for explanations of logic and structure.
 
-Refer to the project documentation (if included).
+>Refer to the project documentation (if included).
 
-Contact the maintainer directly via email or GitHub issues section.
+>Contact the maintainer directly via email or GitHub issues section.
 
-You may also refer to online documentation for HTML, CSS, and JavaScript for debugging or enhancements.
+>You may also refer to online documentation for HTML, CSS, and JavaScript for debugging or enhancements.
 
 *Who Maintains and Contributes to the Project
 
@@ -80,26 +80,26 @@ Bhoomi Magdum- research and report
 
 *Technology Scope and Implementation
 
-HTML – Defines the structure and layout of the app.
+>HTML – Defines the structure and layout of the app.
 
-CSS – Adds visual appeal with gradient backgrounds, animations, and responsive design.
+>CSS – Adds visual appeal with gradient backgrounds, animations, and responsive design.
 
-JavaScript – Enables interactivity, validation, and dynamic content updates.
+>JavaScript – Enables interactivity, validation, and dynamic content updates.
 
-DOM Manipulation – Updates elements and displays results without page reload.
+>DOM Manipulation – Updates elements and displays results without page reload.
 
-Validation Techniques – Ensure name length, age limits, and genre selection accuracy.
+>Validation Techniques – Ensure name length, age limits, and genre selection accuracy.
 
-XML – Can be used for structured data storage or exchange in future iterations.
+>XML – Can be used for structured data storage or exchange in future iterations.
 
-Frontend, Backend & Database Connectivity – Can be integrated later to store user preferences and feedback persistently.
+>Frontend, Backend & Database Connectivity – Can be integrated later to store user preferences and feedback persistently.
 
 *Future Enhancements
 
-Add a backend (Node.js or Python Flask) to store user data.
+>Add a backend (Node.js or Python Flask) to store user data.
 
-Include a movie database API (like TMDB) for real-time recommendations.
+>Include a movie database API (like TMDB) for real-time recommendations.
 
-Allow users to create accounts and save favorite movies.
+>Allow users to create accounts and save favorite movies.
 
-Enhance UI with responsive mobile design and theme toggle.
+>Enhance UI with responsive mobile design and theme toggle.
