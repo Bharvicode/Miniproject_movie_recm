@@ -1,7 +1,7 @@
 # Miniproject_movie_recm
 Our group built a movie recommendation app
 
-*Movie Recommendation App
+#Movie Recommendation App
 ->What the Project Does
 
 The Movie Recommendation App is an interactive web-based application that suggests movies to users based on their preferred genre and personal details such as name and age.
